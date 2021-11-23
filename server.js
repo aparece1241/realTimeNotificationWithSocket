@@ -19,7 +19,6 @@ app.use(function (req, res, next) {
     "Origin, X-Requested-With, Content-Type, Accept"
   );
 
-  // Add this
   if (req.method === "OPTIONS") {
     res.header(
       "Access-Control-Allow-Methods",
@@ -31,6 +30,10 @@ app.use(function (req, res, next) {
 
   next();
 });
+
+app.get('/', (req, res) => {
+    res.send("App is running");
+})
 
 io.on("connection", (client) => {
   console.log("a client is connected!");
